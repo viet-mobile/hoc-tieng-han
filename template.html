@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Học tiếng Hàn</title>
+<meta name="description" content="Học tiếng Hàn dành cho người Việt: hội thoại, câu, ngữ pháp, từ vựng, văn hóa. 베트남어 사용자를 위한 한국어 학습 사이트.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Học tiếng Hàn">
+<meta property="og:title" content="Học tiếng Hàn">
+<meta property="og:description" content="Học tiếng Hàn dành cho người Việt: hội thoại, câu, ngữ pháp, từ vựng, văn hóa.">
+<meta property="og:url" content="https://hoc.tieng.han.viet.mobile/">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:locale:alternate" content="ko_KR">
+<link rel="canonical" href="https://hoc.tieng.han.viet.mobile/">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/png" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2E4F63">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F1F4EC; --surface: #FFFFFF; --surface-2: #E8ECE1; --border: #D7DECC;
+    --ink: #202A22; --ink-soft: #58635A; --ink-faint: #8A9285;
+    --accent: #2E4F63; --accent-ink: #FFFFFF; --accent-soft: #E2E9EC;
+    --warm: #C1791F; --warm-soft: #F6E8D2;
+    --good: #3E7A55; --good-soft: #DEEEE1; --danger: #B14A3C; --chip-bg: #EDEFE6;
+    --shadow: 0 1px 2px rgba(32,42,34,0.06), 0 8px 24px -12px rgba(32,42,34,0.18);
+    --radius-s: 10px 0 10px 0; --radius-m: 16px 0 16px 0; --radius-l: 22px 0 22px 0;
+    /* base = 한국어 (font-base), ui/chrome = Tiếng Việt (font-ui) -- reversed from
+       bahasa-indonesia/zhong-wen, where the UI chrome is Korean, not the target language. */
+    --font-base: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    --font-ui: 'Be Vietnam Pro', 'Noto Sans', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171C18; --surface: #1E2620; --surface-2: #263129; --border: #37423A;
+      --ink: #ECF1E8; --ink-soft: #B2C0AB; --ink-faint: #83997A;
+      --accent: #8FB6CC; --accent-ink: #10262F; --accent-soft: #24343B;
+      --warm: #E3A855; --warm-soft: #3A2E19; --good: #7FC79A; --good-soft: #1E3527;
+      --danger: #E3897A; --chip-bg: #26302A;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); overflow-x: hidden; }
+  body { font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+  .app { max-width: 760px; margin: 0 auto; padding: 0 16px 40px; min-width: 0; }
+  header.site-header { display: flex; align-items: center; gap: 10px; padding: 16px 0 10px; }
+  header.site-header img { width: 40px; height: 40px; border-radius: 10px 0 10px 0; flex: none; }
+  header.site-header h1 { font-size: 1.15rem; margin: 0; }
+  header.site-header .sample-badge {
+    margin-left: auto; font-size: 0.66rem; font-weight: 800; color: var(--danger);
+    background: var(--chip-bg); padding: 3px 8px; border-radius: 999px 0 999px 0; flex: none;
+  }
+  .tabbar { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 4px 0 8px; margin: 0 -16px; padding-inline: 16px; }
+  .tabs { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 6px; }
+  @media (min-width: 560px) { .tabs { grid-template-columns: repeat(6, minmax(0,1fr)); } }
+  .tab-btn {
+    min-height: 44px; border: 1px solid var(--border); border-radius: var(--radius-s);
+    background: var(--surface); color: var(--ink-soft); font-weight: 700; font-size: 0.8rem;
+    cursor: pointer; padding: 8px 4px; font-family: var(--font-ui); overflow-wrap: anywhere;
+  }
+  .tab-btn[aria-selected="true"] { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .search-box {
+    display: flex; align-items: center; gap: 8px; background: var(--surface);
+    border: 1.5px solid var(--border); border-radius: var(--radius-m); padding: 10px 13px; margin: 12px 0;
+  }
+  .search-box svg { width: 16px; height: 16px; color: var(--ink-faint); flex: none; }
+  .search-box input { border: none; outline: none; background: transparent; color: var(--ink); font-size: 0.9rem; width: 100%; font-family: var(--font-ui); }
+  .card-list { display: flex; flex-direction: column; gap: 10px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m);
+    padding: 12px 14px; box-shadow: var(--shadow);
+  }
+  .card-base { font-family: var(--font-base); font-weight: 700; font-size: 1.05rem; color: var(--ink); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; overflow-wrap: anywhere; }
+  .card-base .speak-btn { margin-top: 2px; }
+  .card-ui { font-family: var(--font-ui); font-size: 0.86rem; color: var(--ink-faint); margin-top: 5px; line-height: 1.5; overflow-wrap: anywhere; }
+  .speak-btn {
+    flex: none; width: 30px; height: 30px; border-radius: 999px; border: 1.5px solid var(--accent);
+    background: var(--accent-soft); color: var(--accent); display: inline-flex; align-items: center;
+    justify-content: center; cursor: pointer;
+  }
+  .speak-btn svg { width: 15px; height: 15px; }
+  .empty-state { text-align: center; padding: 30px 10px; color: var(--ink-faint); font-size: 0.88rem; }
+  .flash-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m);
+    padding: 20px 16px; text-align: center; cursor: pointer; box-shadow: var(--shadow);
+  }
+  .flash-card .fc-base { font-family: var(--font-base); font-weight: 800; font-size: 1.25rem; }
+  .flash-card .fc-ui { font-family: var(--font-ui); font-size: 0.9rem; color: var(--ink-faint); margin-top: 10px; display: none; }
+  .flash-card[data-revealed="true"] .fc-ui { display: block; }
+  .flash-hint { text-align: center; font-size: 0.74rem; color: var(--ink-faint); margin-top: 8px; }
+  footer.site-footer { text-align: center; font-size: 0.72rem; color: var(--ink-faint); padding: 30px 10px 10px; line-height: 1.6; }
+  @media (max-width: 380px) { .tab-btn { font-size: 0.68rem; padding: 7px 2px; } }
+</style>
+</head>
+<body>
+<div class="app" id="app-root">
+  <header class="site-header">
+    <img src="assets/icon-192.png" alt="Học tiếng Hàn">
+    <h1>Học tiếng Hàn</h1>
+    <span class="sample-badge">DỮ LIỆU MẪU</span>
+  </header>
+
+  <nav class="tabbar">
+    <div class="tabs" id="tab-bar" role="tablist"></div>
+  </nav>
+
+  <main id="panels-root"></main>
+
+  <footer class="site-footer">Học tiếng Hàn &middot; Trang học tiếng Hàn dành cho người Việt</footer>
+</div>
+
+<script>
+__DATA_JS__
+</script>
+<script>
+__APP_JS__
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Generated deployment artifact
+dist/
+data_block.js
+
+# Python / editor local files
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
